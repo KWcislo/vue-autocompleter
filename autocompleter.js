@@ -21,6 +21,9 @@ Vue.component('v-autocompleter', {
         </div>`,
 
     props: ['value','options'],
+    /**
+     * Znajduje się tutaj wartość wpisana w input
+     */
   
     data: function () {
       return {
@@ -37,6 +40,11 @@ Vue.component('v-autocompleter', {
     },
 
     watch: {
+      /**
+       * Funkcja ta zajmuje się obserwacja zmian z wykorzystaniem przejsc wykonanymi strzalkami.
+       * Wykonujac ruch strzalkami wartosc w inpucie sie nie zmienia
+       */
+
       list_counter: function(){
         this.cities_update = false;
 
@@ -44,6 +52,10 @@ Vue.component('v-autocompleter', {
           this.$emit('input', this.filteredCities[this.list_counter].name);
         }
       },
+
+      /**
+       * Funkcja ta zajmuje sie sposobem wyswietlania wlasciwego autocompletera
+       */
 
       value: function(){
         if(this.value.length == 0){
@@ -61,6 +73,9 @@ Vue.component('v-autocompleter', {
     },
 
     methods: {
+      /**
+       * Funkcja ta tworzy rozsuwana liste 10 miast
+       */
       createFilteredCities(bool){
           if(bool){
             let result = this.cities.filter(city => city.name.includes(this.value));
@@ -74,14 +89,26 @@ Vue.component('v-autocompleter', {
         }
       },
 
+      /**
+       * Funkcja ta wystawia wlasciwy event po przejsciu z autocompletera
+       */
+
       listClicked(name){
           this.$emit('input', this.value);
           this.enterClick();
       },
+      /**
+       * Funkcja ta pokazuje event po przejsciu z autocompletera i wskazaniu odpowiedniego miasta
+       * @param {wybrane miasto na liscie} i 
+       */
 
       choose(i){
           this.$emit('input', this.filteredCities[i].name);
       },
+      /**
+       * Funkcja ta pokazuje event po przejsciu z autocompletera i wskazaniu odpowiedniego miasta za pomoca entera
+       * @param {*} event 
+       */
 
       enterClick: function(event) {
         if(event) {
@@ -91,6 +118,9 @@ Vue.component('v-autocompleter', {
         this.$emit('enter', this.value);
         this.zmiana2 = 1;
       },
+      /**
+       * Funkcja ta zmienia wartosc iteratora autocompletera jeśli chodzi o przesuwanie strzalka w gore
+       */
 
       upClick() {
         if(this.list_counter > -1){
@@ -99,6 +129,9 @@ Vue.component('v-autocompleter', {
           this.list_counter = this.filteredCities.length - 1;
         }
       },
+      /**
+       * Funkcja ta zmienia wartosc iteratora autocompletera jeśli chodzi o przesuwanie strzalka w dol
+       */
 
       downClick() {
         if(this.list_counter < this.filteredCities.length - 1){
@@ -108,6 +141,11 @@ Vue.component('v-autocompleter', {
           this.list_counter = -1;
         }
       },
+      /**
+       * Funkcja zapisuje część wyrazu, której nie wpisalismy w wyszukiwarke
+       * @param {zmieniony wyraz} input_city 
+       * @returns wyraz po zmianie 
+       */
 
       boldCity(input_city){
         let regex = new RegExp(this.googleSearch_temp, "gi");
