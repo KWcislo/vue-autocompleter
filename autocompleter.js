@@ -7,9 +7,9 @@ Vue.component('v-autocompleter', {
           type="text"
           class="middle2"
           @input="$emit('input', $event.target.value)"
-          @keyup.down="downClick"
-          @keyup.up="upClick"
-          @keyup.enter="enterClick" />
+          @keyup.down="strzalka_w_dol"
+          @keyup.up="strzalka_w_gore"
+          @keyup.enter="enter" />
               <div class="lista1"></div>
                 <div class="lista2">
                     <ul v-for="(city, index) in filteredCities" v-on:click="update_input(city.name)">
@@ -95,7 +95,7 @@ Vue.component('v-autocompleter', {
 
       listClicked(name){
           this.$emit('input', this.value);
-          this.enterClick();
+          this.enter();
       },
       /**
        * Funkcja ta pokazuje event po przejsciu z autocompletera i wskazaniu odpowiedniego miasta
@@ -110,7 +110,7 @@ Vue.component('v-autocompleter', {
        * @param {*} event 
        */
 
-      enterClick: function(event) {
+      enter: function(event) {
         if(event) {
           this.cities_update = true;
           this.list_counter = -1;
@@ -122,7 +122,7 @@ Vue.component('v-autocompleter', {
        * Funkcja ta zmienia wartosc iteratora autocompletera jeśli chodzi o przesuwanie strzalka w gore
        */
 
-      upClick() {
+       strzalka_w_gore() {
         if(this.list_counter > -1){
           this.list_counter -= 1;
         } else if(this.list_counter == 0) {
@@ -133,7 +133,7 @@ Vue.component('v-autocompleter', {
        * Funkcja ta zmienia wartosc iteratora autocompletera jeśli chodzi o przesuwanie strzalka w dol
        */
 
-      downClick() {
+      strzalka_w_dol() {
         if(this.list_counter < this.filteredCities.length - 1){
           this.list_counter += 1;
         }
