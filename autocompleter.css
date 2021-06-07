@@ -1,43 +1,44 @@
-.middle1 .middle2 {
-	display: block;
-    grid-template-rows: 50% 50%;
-	border: 2px solid rgb(243, 242, 242);
-	font-size: 13px;
-	width: 100%;
-    padding: 12px;
-	padding-left: 40px;
-	border-radius: 20px;
+ .middle1 .middle2 {
+	padding-left: 45px;
+	border-radius: 22px;
 	outline: none;
 	cursor: auto;
+	display: block;
+    grid-template-rows: 50% 50%;
+	border: 2px solid rgb(248, 235, 235);
+	width: 100%;
+    padding: 11px;
+	font-size: 12px;
+}
+
+
+.vue-autocompleter:hover {
+	box-shadow: 0 0 5px rgba(150, 149, 149, 0.822);
+	border: 1px solid rgb(247, 234, 234);
 }
 
 .vue-autocompleter {
-	border: 1px solid rgb(240, 238, 238);
-	cursor: auto;
-	border-radius: 24px;
+	border-radius: 23px;
+	border: 1px solid rgb(219, 216, 216);
 	outline: none;
-}
-
-.vue-autocompleter:hover {
-	box-shadow: 0 0 5px rgba(158, 157, 157, 0.822);
-	border: 1px solid rgb(253, 248, 248);
+	cursor: auto;
+	
 }
 .thin {
-	font-weight: 500;
-}
-
-.vue-autocompleter .lista2 li{
-	list-style: none;
-	margin: 0 14px 0 14px;
-	text-align: left;
-	padding: 6px 5px 6px 28px;
-	background-image: url('zdjecia/lupa.png');
-	background-repeat: no-repeat;
-	background-position: left center;
-	background-size: 21px;
-	
+	font-weight: 510;
 }
 
 .vue-autocompleter .lista2 li.pogrubienie{
-	background-color: rgb(250, 246, 246);
+	background-color: rgb(238, 238, 238);
+}
+
+.vue-autocompleter .lista2 li{
+	background-image: url('zdjecia/lupa.png');
+	background-repeat: no-repeat;
+	list-style: none;
+	text-align: left;
+	padding: 6px 5px 6px 28px;
+	background-position: left center;
+	background-size: 22px;
+	margin: 0 15px 0 15px;
 }
